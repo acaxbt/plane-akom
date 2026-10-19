@@ -1,14 +1,33 @@
-name: AKOM UI — Cloudflare Preview
+name: AKOM UI — Build & Cloudflare Preview
 
 on:
+  pull_request:
+    paths:
+      - "akom-ui/**"
+      - ".github/workflows/akom-ui-cloudflare.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
+  build:
+    name: Build AKOM prototype
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: akom-ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+
   deploy:
-    if: github.ref == 'refs/heads/feature/akom-ui-v0.1'
+    name: Deploy to Cloudflare Workers
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feature/akom-ui-v0.1'
     runs-on: ubuntu-latest
     defaults:
       run:
