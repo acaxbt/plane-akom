@@ -1,4 +1,4 @@
-# AKOM UI · V0.2
+# AKOM UI · V0.3
 
 A Linear-inspired **interactive React prototype** for AKOM. This is an independent frontend project, intentionally isolated from the Plane fork core. **No backend and no authentication are implemented yet.**
 
@@ -48,3 +48,11 @@ Design inspiration only. No third-party copyrighted images or app assets include
 **Global organization user ID** is separate from workspace ownership. The prototype issues retain `workspace` and `assignee` independently to demonstrate cross-workspace workflows. In production the backend must enforce issue-scoped permissions, organization membership, attachment rules, and revocation. This prototype intentionally makes no security guarantees.
 
 Future backend: Cloudflare Workers/Hono, D1, R2, Durable Objects. The UI intentionally requires none of these services.
+
+## V0.3 — Issue list drag and creation flows
+
+- **List View:** drag an issue row using its grip to reorder it in a status group, drag it into another status group, or drop it on an empty group. The sort indicator switches to **Manual** when reordering. This uses desktop HTML drag-and-drop; touch dragging will require a later interaction pass.
+- **Cross-workspace assignee:** the directory popover is rendered through a React portal above the issue drawer and the Create Issue dialog. It is not clipped by scroll containers.
+- **Add Team:** click `+` next to YOUR TEAMS, set a name, unique 2–5 letter identifier, and owning workspace. New teams appear in the sidebar and are available to new issues.
+- **Add Project:** click `+` next to PROJECTS or **New project** on the Projects page. Select a lead team, then open the new project and create issues for it.
+- Teams, projects and issues are stored in local browser storage for prototype testing. **Reset demo data** restores everything. No backend authentication or cross-workspace permissions are enforced yet.

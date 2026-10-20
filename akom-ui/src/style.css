@@ -50,3 +50,43 @@
 .persona-footer{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .reset-demo{border:0;background:transparent;color:var(--accent);font-size:11px;padding:4px 0;white-space:nowrap}
 .reset-demo:hover{text-decoration:underline}
+
+/* V0.3 — reorderable issue rows, portal popovers, and real creation dialogs */
+.row-drag-handle{flex-shrink:0;color:var(--faint);opacity:.18;cursor:grab;transition:opacity .12s;margin-left:-9px;margin-right:-5px}
+.issue-row:hover .row-drag-handle,.issue-row:focus-visible .row-drag-handle{opacity:1}
+.issue-row[draggable="true"]{user-select:none}
+.issue-row[draggable="true"]:active .row-drag-handle{cursor:grabbing}
+.issue-row-dragging{opacity:.4;background:var(--accent-tint)}
+.issue-row-drop-before{box-shadow:inset 0 3px 0 var(--accent)}
+.issue-row-drop-after{box-shadow:inset 0 -3px 0 var(--accent)}
+.issue-group-drop>.group-heading{background:var(--accent-tint)}
+.group-drop-note{margin-left:auto;color:var(--accent);font-size:10px;font-weight:600;opacity:0;transition:opacity .12s}
+.issue-group-drop .group-drop-note{opacity:1}
+.drop-empty-row{padding:14px 21px;text-align:center;color:var(--accent);background:var(--accent-tint);font-size:11px;border-top:1px dashed var(--accent)}
+.chevron-collapsed{transform:rotate(-90deg)}
+.assignee-portal{position:fixed!important;right:auto!important;bottom:auto!important;z-index:2000!important;max-width:calc(100vw - 24px);max-height:min(385px,calc(100vh - 32px));box-shadow:0 22px 80px rgba(0,0,0,.5)}
+.assignee-portal .picker-options{max-height:min(270px,calc(100vh - 170px));overflow-y:auto}
+.team-switcher{width:100%;cursor:pointer;border:0;background:transparent;text-align:left;flex-shrink:0}
+.team-switcher:hover,.team-current{background:var(--hover)}
+.nav-add-button{width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--faint);background:transparent;border:0;border-radius:5px;padding:0}
+.nav-add-button:hover{background:var(--hover);color:var(--text-strong)}
+.entity-page-header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.entity-page-header .page-head{flex:1}
+.entity-page-header>.primary-button{flex-shrink:0}
+.entity-overlay{align-items:flex-start;padding:clamp(38px,16vh,160px) 18px 18px;z-index:85}
+.entity-modal{width:min(95vw,508px);max-height:calc(100vh - 70px);overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);animation:modal-in .16s ease;color:var(--text)}
+.entity-modal-heading{padding:22px 24px 17px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:13px}
+.entity-modal-heading>div{flex:1;min-width:0}
+.entity-modal-heading h2{font-size:17px;color:var(--text-strong);margin:0 0 5px;font-weight:680;letter-spacing:-.02em}
+.entity-modal-heading p{font-size:11.5px;color:var(--muted);line-height:1.6;margin:0}
+.entity-modal-icon{height:36px;width:36px;background:var(--accent-tint);color:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.entity-form{padding:22px 24px;display:flex;flex-direction:column;gap:17px}
+.entity-form label{display:flex;flex-direction:column;gap:8px;font-size:11.5px;font-weight:620;color:var(--text)}
+.entity-form input,.entity-form select,.entity-form textarea{width:100%;min-width:0;display:block;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--text);padding:10px 11px;outline:none;font-size:12px;font-weight:450;resize:vertical}
+.entity-form input:focus,.entity-form select:focus,.entity-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint)}
+.entity-form input::placeholder,.entity-form textarea::placeholder{color:var(--faint)}
+.entity-form small{font-size:10.5px;color:var(--muted);font-weight:400;line-height:1.5}
+.entity-form .form-error{color:#e88888}
+.entity-form .optional{font-size:10px;color:var(--faint);font-weight:400}
+.entity-modal-actions{display:flex;justify-content:flex-end;gap:9px;border-top:1px solid var(--line);padding:14px 24px}
+@media(max-width:650px){.entity-page-header{align-items:flex-start;flex-direction:column}.entity-overlay{padding-top:30px}.entity-modal{max-height:calc(100vh - 60px)}}
