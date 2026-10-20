@@ -33,3 +33,19 @@ The navigation and workspace switcher follow patterns captured from [Linear — 
 ## Security and backend caveat
 
 The prototype intentionally has **no real RBAC**, authorization, authentication, R2 permissions, session management, nor persistence shared across users. Client-side identity switching is a demo tool, not secure impersonation. Do not treat issue-level UI filtering as authorization. The backend must enforce tenant isolation, workspace membership, issue-scoped grants, revocation, attachments and relation redaction before production use.
+
+## V0.5 — Full-page issue and editable projects
+
+- Opening an issue navigates to a **full-width issue page**, retaining workspace navigation and a dedicated right-hand properties rail. The old right-sided sheet is removed. Browser URLs use `/issue/MED-128`; browser Back/Forward and deep-link refresh are supported by the SPA fallback.
+- Issue title, description, status, priority, assignee, project, labels, due date, and comments are editable for workspace members. External assignees stay restricted to status and comments.
+- Clicking a project now opens a **full Project Overview**, with progress computed from actual project issues, involved teams, issue activity, and project properties. An Issues tab displays all issues across the project's teams.
+- **Edit Project** supports name, description, status, lead, target date, and associated teams. All changes persist in mock browser storage.
+- Project links use `/project/fyp` and open within the app shell. Returning from an issue restores project context.
+- Intentional prototype limitation: other workspace data is not accessible through project pages; production authorization must still be server-enforced.
+
+### Next UI priorities
+
+1. Rich editor for issue descriptions/comments, real sub-issues, issue relations, and attachments.
+2. Project milestone editor, project updates, project activity feed, and roadmap timeline.
+3. Triage, filters, saved views, bulk actions, and keyboard-first navigation.
+4. Workflow/label/notification settings, and responsive touch interactions.
