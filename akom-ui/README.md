@@ -94,3 +94,13 @@ All changes remain localStorage demo state: workflow stages/triage and saved vie
 - Activity supports posting demo project-health updates; all content remains browser-local.
 - Issues remains the home for project issue lists. AKOM-specific operational stages are optional via Issues' `Group by project stage` and project overflow settings. These are **not** represented as native Linear top-level project tabs.
 - See `PROJECT_UI_AUDIT.md` for canonical Mobbin links, Linear docs, and implementation boundaries.
+
+## V0.10 — Issue List & Issue Detail visual/interaction pass
+
+This pass follows verified Linear screenshots on Mobbin ([Team issues](https://mobbin.com/flows/68d53c65-1f92-4961-b507-de4bf4ea0adf), [Issue detail](https://mobbin.com/flows/fb8e3917-79bc-40c3-8c97-1e21b3c5a527), [Formatting text](https://mobbin.com/flows/3c49d20c-1e7a-4c84-bec0-ca59616a5e93)). It does **not** change authorization, data-model boundaries, or add novel UI tabs.
+
+- Condensed issue list with compact status group headers, inline issue metadata, subtle focus/hover controls, retained status editing and drag reorder. Arrow-up/down navigate rows with keyboard.
+- Single top breadcrumb and two-column issue detail: document-like content center, minimal right properties sidebar.
+- Title click-to-edit seamlessly reflows in place; Enter/blur saves, Escape cancels.
+- Description click-to-edit uses borderless multiline editor in same location, accessible formatting controls, preview, and save on leaving editor or Cmd/Ctrl+Enter; Escape cancels.
+- External assignees remain read-only for owner-managed fields and keep only individually granted issue access.
