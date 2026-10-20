@@ -49,3 +49,14 @@ The prototype intentionally has **no real RBAC**, authorization, authentication,
 2. Project milestone editor, project updates, project activity feed, and roadmap timeline.
 3. Triage, filters, saved views, bulk actions, and keyboard-first navigation.
 4. Workflow/label/notification settings, and responsive touch interactions.
+
+
+## V0.6 · Issue details and milestones
+
+- Full-page issue details with local Markdown formatting and preview (no HTML injection).
+- Sub-issue creation, parent links, progress, and quick status updates.
+- Issue dependencies (blocked by, blocking) scoped to the issue's workspace.
+- Link attachments and local file-metadata demonstrations; **file bytes are not stored/uploaded**.
+- Project Milestones tab, editable milestone description and target date, progress, and issue assignments.
+- Workspace boundaries: external issue assignees can comment and edit status but cannot enumerate other issues, modify dependencies, change milestone/project or create sub-issues.
+- All interactions are local demo state. No authentication, backend, access enforcement, or realtime sync is implemented.
