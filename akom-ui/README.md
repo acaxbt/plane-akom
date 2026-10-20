@@ -60,3 +60,14 @@ The prototype intentionally has **no real RBAC**, authorization, authentication,
 - Project Milestones tab, editable milestone description and target date, progress, and issue assignments.
 - Workspace boundaries: external issue assignees can comment and edit status but cannot enumerate other issues, modify dependencies, change milestone/project or create sub-issues.
 - All interactions are local demo state. No authentication, backend, access enforcement, or realtime sync is implemented.
+
+## V0.7 — Workflow UI for Product, Brand Communications, and Business
+
+- Project > **Workflow** adds a configurable Kanban/list operating-stage view separate from issue/team `status` and project lifecycle `status`.
+- Project > **Configure workflow** manages stages (name, category, color, order), chooses three templates, and safely handles stage migrations. Projects in different departments may have entirely different stage sets.
+- Example projects: `Brand Campaign Launch` (`/project/campaign`), `Commercial Partnership Pipeline` (`/project/pipeline`), existing Product projects.
+- Issue Detail includes an explicit **Project stage** field for workspace members only, without exposing project workflow controls to external issue assignees.
+- Triage queue supports intake, accept, dismiss; **Custom views** saves filter/layout choices per workspace.
+- See [WORKFLOW_RESEARCH.md](WORKFLOW_RESEARCH.md) for official Linear docs, matching Mobbin flows, and the explicit distinction between native Linear capabilities and AKOM extensions.
+
+All changes remain localStorage demo state: workflow stages/triage and saved views are **not** production-grade permission boundaries or server-backed records.

@@ -204,3 +204,91 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 @media(max-width:600px){.subissue-create{flex-wrap:wrap}.subissue-create input{width:100%;flex-basis:100%}.milestones-page-top{align-items:flex-start;flex-direction:column}.milestones-page-top .primary-button{width:100%;justify-content:center}.rich-footer>div{width:100%;justify-content:flex-end}}
 .mention-picker{border:1px solid var(--line);background:var(--surface);border-radius:7px;box-shadow:var(--shadow);padding:4px;margin:6px 0;max-height:178px;overflow:auto}
 .mention-picker button{width:100%;display:flex;align-items:center;gap:9px;border:0;background:none;color:var(--text);padding:7px;border-radius:5px;text-align:left;font-size:12px}.mention-picker button:hover{background:var(--hover)}
+
+/* V0.7 · Configurable project workflow — intentionally separate from team issue statuses. */
+.project-workflow-page{padding:24px 26px 40px;min-height:450px;max-width:100%;overflow:hidden}
+.workflow-page-toolbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.workflow-page-toolbar h2{font-size:21px;font-weight:650;letter-spacing:-.03em;color:var(--text-strong);margin:5px 0}
+.workflow-page-toolbar p{color:var(--muted);font-size:12px;line-height:1.7;margin:0;max-width:610px}
+.workflow-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.workflow-stage-strip{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.workflow-stage-strip>span{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:6px 9px}
+.workflow-stage-strip i,.project-workflow-summary i,.workflow-column-title i,.workflow-stage-list header i{width:9px;height:9px;min-width:9px;border-radius:50%;display:inline-block}
+.workflow-kanban{display:flex;align-items:stretch;gap:11px;overflow-x:auto;padding-bottom:18px;max-width:100%;scrollbar-width:thin}
+.workflow-column{width:238px;min-width:238px;max-width:238px;min-height:355px;background:var(--surface-2);border:1px solid var(--line-subtle);border-radius:10px;padding:13px 10px;transition:background .13s ease,border-color .13s ease}
+.workflow-column.workflow-over{background:var(--accent-tint);border-color:var(--accent)}
+.workflow-column-title{display:flex;align-items:center;gap:8px;color:var(--text-strong);font-size:12px;padding:0 3px}
+.workflow-column-title strong{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.workflow-category-label{display:block;text-transform:uppercase;letter-spacing:.11em;font-size:9px;color:var(--faint);margin:6px 3px 13px}
+.workflow-column-items{display:flex;flex-direction:column;gap:7px}
+.workflow-issue-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;width:100%;display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:10px;min-height:105px;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+.workflow-issue-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-1px)}
+.workflow-issue-card.workflow-dragging{opacity:.43}
+.workflow-issue-code{font-size:10px;color:var(--muted);display:flex;justify-content:space-between}
+.workflow-issue-card>strong{font-size:12px;line-height:1.55;font-weight:560;color:var(--text-strong)}
+.workflow-issue-foot{display:flex;justify-content:space-between;align-items:center;color:var(--faint);font-size:10px;margin-top:auto}
+.workflow-drop-hint{border:1px dashed var(--line);border-radius:8px;text-align:center;color:var(--faint);padding:28px 8px;font-size:11px}
+.workflow-boundary-hint{display:flex;align-items:flex-start;gap:8px;color:var(--muted);font-size:11px;line-height:1.7;margin-top:14px;padding:13px 15px;background:var(--surface-2);border:1px solid var(--line-subtle);border-radius:8px}
+.workflow-boundary-hint svg{flex:none;margin-top:1px}
+.project-workflow-summary{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}
+.project-workflow-summary span{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:7px 9px;font-size:11px;color:var(--text)}
+.project-workflow-note{color:var(--muted);font-size:11px;margin-top:9px!important}
+.workflow-stage-list{display:flex;flex-direction:column;gap:14px}
+.workflow-stage-list section{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.workflow-stage-list section header{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface-2);font-size:12px;font-weight:610}
+.workflow-list-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 16px;border-top:1px solid var(--line-subtle);font-size:12px}
+.workflow-list-row>button{text-align:left;color:var(--text);flex:1}
+.workflow-list-row>button:hover{color:var(--accent)}
+.workflow-list-row select{background:var(--surface-2);border:1px solid var(--line);border-radius:5px;color:var(--text);font-size:11px;padding:6px;max-width:175px}
+.workflow-editor-overlay{z-index:950}
+.workflow-editor{width:min(770px,calc(100vw - 28px));max-height:min(88vh,810px);display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.workflow-editor-head{position:relative;border-bottom:1px solid var(--line);padding:25px 30px 22px}
+.workflow-editor-head h2{font-size:22px;letter-spacing:-.04em;margin:6px 0;color:var(--text-strong)}
+.workflow-editor-head p{font-size:12px;color:var(--muted);margin:0;max-width:600px;line-height:1.6}
+.workflow-editor-head>.square-icon{position:absolute;right:19px;top:21px}
+.workflow-editor-body{overflow-y:auto;padding:23px 30px 25px}
+.workflow-template-picker>label,.workflow-editor-label strong{font-size:12px;color:var(--text-strong);font-weight:650}
+.workflow-template-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:11px 0 10px}
+.workflow-template-options button{padding:15px;text-align:left;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);transition:border-color .15s ease}
+.workflow-template-options button.selected{background:var(--accent-tint);border-color:var(--accent)}
+.workflow-template-options button:hover{border-color:var(--accent)}
+.workflow-template-options strong{font-size:12px;color:var(--text-strong)}
+.workflow-template-options small,.workflow-template-picker>small{font-size:10px;color:var(--muted);line-height:1.5}
+.workflow-editor-label{display:flex;align-items:center;gap:10px;justify-content:space-between;margin:24px 0 12px}
+.workflow-editor-label span:not(.count-pill){font-size:10px;color:var(--muted)}
+.workflow-edit-rows{display:flex;flex-direction:column;gap:7px}
+.workflow-edit-row{display:flex;align-items:center;gap:9px;padding:9px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-subtle)}
+.workflow-edit-sort{display:flex;flex-direction:column;gap:1px}
+.workflow-edit-sort button{border-radius:3px;padding:0 4px;color:var(--muted);font-size:12px;line-height:13px}
+.workflow-edit-sort button:hover:not(:disabled){color:var(--accent);background:var(--hover)}
+.workflow-edit-sort button:disabled{opacity:.25;cursor:default}
+.workflow-edit-row input[type=color]{width:28px;height:28px;border:0;background:transparent;cursor:pointer;flex:none}
+.workflow-edit-row input[type=text],.workflow-edit-row input:not([type]){flex:1;min-width:0}
+.workflow-edit-row input[aria-label^="Stage name"]{flex:1;min-width:0}
+.workflow-edit-row input[aria-label^="Stage name"],.workflow-edit-row select{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:8px 10px;color:var(--text);font-size:12px}
+.workflow-edit-row select{width:135px}
+.workflow-remove{border-radius:5px;color:var(--muted);padding:5px}
+.workflow-remove:hover:not(:disabled){color:#e18f96;background:rgba(225,143,150,.1)}
+.workflow-remove:disabled{opacity:.25;cursor:not-allowed}
+.workflow-add-stage{margin-top:12px;display:flex;align-items:center;gap:6px;color:var(--accent);border-radius:6px;font-size:12px;padding:8px 4px}
+.workflow-add-stage:hover{background:var(--hover)}
+.workflow-editor-error{color:#ef9999;font-size:11px;margin:10px 0 0}
+.workflow-editor-info{color:var(--muted);font-size:11px;line-height:1.65;margin:14px 0 0}
+.workflow-editor-footer{border-top:1px solid var(--line);padding:15px 26px;display:flex;justify-content:flex-end;gap:9px}
+.workflow-field-help{display:block;color:var(--faint);font-size:10px;margin-top:5px;line-height:1.5}
+.triage-list{padding:14px 28px 30px;display:flex;flex-direction:column;gap:10px}
+.triage-item{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:18px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.triage-item-main{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.triage-item-main .muted{font-size:11px}
+.triage-item-main button{color:var(--text-strong);font-weight:610;font-size:13px;text-align:left}
+.triage-item-main button:hover{color:var(--accent)}
+.triage-actions{display:flex;gap:8px;flex:none}
+.triage-empty{padding:55px 30px;text-align:center;color:var(--muted);display:flex;flex-direction:column;gap:9px;align-items:center;justify-content:center;min-width:230px}
+.triage-empty>strong{color:var(--text-strong);font-size:14px}.triage-empty>p{font-size:12px;max-width:340px;line-height:1.65;margin:0}
+.saved-view-grid{padding:12px 26px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px}
+.saved-view-card{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:17px;display:flex;flex-direction:column;gap:11px}
+.saved-view-card>strong{font-size:14px;color:var(--text-strong)}
+.saved-view-card>p{font-size:11px;color:var(--muted);margin:0}
+.saved-view-card>div:last-child{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.saved-view-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--accent-tint);color:var(--accent);border-radius:8px}
+@media(max-width:720px){.workflow-page-toolbar{padding:0}.project-workflow-page{padding:18px 13px 28px}.workflow-editor-body{padding:17px}.workflow-editor-head{padding:20px}.workflow-template-options{grid-template-columns:1fr}.workflow-edit-row{flex-wrap:wrap}.workflow-edit-row select{width:120px}.workflow-editor-label{align-items:flex-start;flex-direction:column}.triage-item{flex-direction:column;align-items:stretch}.triage-actions{justify-content:flex-end}.triage-list{padding:12px}}
