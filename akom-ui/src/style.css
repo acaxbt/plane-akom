@@ -301,3 +301,109 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 @media(max-width:1050px){.project-directory-columns,.project-directory-row{grid-template-columns:minmax(170px,2fr) minmax(90px,1fr) minmax(80px,1fr) minmax(70px,1fr)}.project-directory-columns>*:nth-child(5),.project-directory-row>*:nth-child(5),.project-directory-columns>*:nth-child(4),.project-directory-row>*:nth-child(4){display:none}}
 @media(max-width:650px){.project-directory-header{align-items:flex-start}.project-directory-toolbar{align-items:stretch}.project-directory-search{width:100%}.project-directory-columns,.project-directory-row{grid-template-columns:minmax(145px,2fr) minmax(74px,.8fr) minmax(60px,.7fr);gap:8px}.project-directory-columns>*:nth-child(3),.project-directory-row>*:nth-child(3){display:none}.project-directory-list{margin:0 -4px}.project-directory-row{padding:12px 9px}.project-directory-columns{padding:12px 9px}.project-directory-progress .progress-rail{width:35px}.project-activity-page{padding:24px 15px}.project-issues-head{flex-wrap:wrap}.project-resource-empty{flex-wrap:wrap}}
 
+
+/* ── V0.9 — Linear Projects visual parity. Verified against Mobbin project directory
+   and project overview/screens; keep AKOM-only project stages behind project options. ── */
+.app:has(.project-detail-page) .sidebar,
+.app:has(.project-directory) .sidebar{width:232px;flex-basis:232px}
+.app:has(.project-detail-page) .sidebar.side-collapsed,
+.app:has(.project-directory) .sidebar.side-collapsed{width:60px;flex-basis:60px}
+.app:has(.project-detail-page) .brand-area,
+.app:has(.project-directory) .brand-area{height:51px;padding:10px 12px}
+.app:has(.project-detail-page) .topbar,
+.app:has(.project-directory) .topbar{height:47px;padding:0 22px}
+.app:has(.project-detail-page) .top-meta,
+.app:has(.project-directory) .top-meta{display:none}
+.app:has(.project-detail-page) .topbar .top-actions,
+.app:has(.project-directory) .topbar .top-actions{gap:4px}
+.app:has(.project-detail-page) .sidebar .search-trigger,
+.app:has(.project-directory) .sidebar .search-trigger{height:29px;margin-bottom:10px;border-color:transparent;background:transparent}
+.app:has(.project-detail-page) .sidebar .nav-button,
+.app:has(.project-directory) .sidebar .nav-button{height:30px;font-size:12px;font-weight:480}
+/* Project directory: flat table with no cards, as on Linear. */
+.content:has(.project-directory){padding:0;overflow:auto}
+.project-directory{max-width:none;margin:0;width:100%;padding:0 28px 70px}
+.project-directory-header{margin:0;min-height:53px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.project-directory-title{display:flex;align-items:center;gap:7px;color:var(--text-strong)}
+.project-directory-title h1{margin:0;font-size:13px;line-height:1.4;font-weight:600;letter-spacing:-.015em}
+.project-directory-title>svg{color:var(--faint)}
+.project-directory-title-count{font-size:11px;color:var(--muted);font-weight:450}
+.project-new-button{border:0;border-radius:5px;background:transparent;color:var(--muted);font-size:11px;display:flex;align-items:center;gap:6px;padding:6px 9px}
+.project-new-button:hover{background:var(--hover);color:var(--text)}
+.project-directory-toolbar{padding:4px 0 9px;margin:0;gap:11px;min-height:40px}
+.project-directory-toolbar label{border:0!important;background:transparent!important;padding:4px 2px!important;font-size:11px!important;color:var(--muted)}
+.project-directory-search{border:0!important;background:transparent!important;padding:3px 4px!important;width:220px;max-width:32vw}
+.project-directory-search input{font-size:11px}
+.project-directory-count{margin-left:auto;font-size:10.5px;color:var(--faint)}
+.project-directory-list{background:transparent;border:0;border-radius:0;overflow:visible}
+.project-directory-columns,.project-directory-row{grid-template-columns:minmax(175px,2.6fr) minmax(95px,1fr) minmax(90px,1fr) minmax(86px,1.2fr) minmax(75px,.8fr) minmax(75px,.9fr);gap:10px}
+.project-directory-columns{background:transparent;border:0;border-bottom:1px solid var(--line-subtle);padding:10px 8px;color:var(--faint);font-size:10px;font-weight:500}
+.project-directory-row{padding:7px 8px;min-height:39px;border-bottom:1px solid var(--line-subtle);font-size:11px}
+.project-directory-row:hover{background:var(--hover)}
+.project-directory-name{gap:10px}
+.project-directory-name strong{font-size:11.5px;font-weight:580;letter-spacing:-.006em}
+.project-directory-icon{width:21px;height:21px;min-width:21px;font-size:13px;border-radius:4px;background:transparent!important}
+.project-directory-name small{display:none}
+.project-directory-status{font-size:10.5px;gap:5px;padding:0;color:var(--muted);background:transparent;border:0}
+.project-directory-status svg{width:12px;height:12px}
+.project-directory-lead,.project-directory-teams,.project-directory-target,.project-directory-progress{font-size:10.5px;color:var(--muted)}
+.project-directory-progress .progress-rail{width:39px;height:4px}
+/* Project detail: header and tabs at top, document canvas + property/activity rail. */
+.project-detail-page{height:100%;min-height:0}
+.project-detail-tabs{order:0;max-width:none;width:100%;padding:0 21px;height:39px;min-height:39px;flex-shrink:0;display:flex;align-items:center;gap:15px;border-bottom:1px solid var(--line-subtle)}
+.project-detail-tabs > button:not(.square-icon){height:39px;padding:0 3px;border-bottom:1.5px solid transparent;font-size:11.5px;color:var(--muted);font-weight:520}
+.project-detail-tabs > button:not(.square-icon).active{border-bottom-color:var(--text-strong);font-weight:570;color:var(--text-strong)}
+.project-detail-tabs .project-nav-back{opacity:.7;font-size:10.5px!important;display:inline-flex;gap:2px;align-items:center}
+.project-detail-tabs .project-nav-back:hover{opacity:1}
+.project-detail-tabs .project-options-root{margin:0;align-self:center}
+.project-detail-tabs .project-options-root .square-icon{height:29px;width:30px}
+.project-detail-layout{order:1;max-width:none;width:100%;grid-template-columns:minmax(0,1fr) 284px;align-items:stretch;min-height:0}
+.project-overview-main{padding:58px clamp(26px,5vw,80px) 75px;gap:0;max-width:1100px;margin:0 auto;width:100%;display:block}
+.project-hero{padding:0;margin:0 0 18px;max-width:none;display:flex;align-items:flex-start;gap:11px}
+.project-icon-large{width:25px;min-width:25px;height:25px;border:0!important;border-radius:4px;background:transparent!important;font-size:19px;line-height:1}
+.project-hero-main h1{font-size:22px;line-height:1.24;letter-spacing:-.037em;font-weight:660;margin:0 0 8px}
+.project-hero-main p{margin:0;color:var(--muted);font-size:12px;line-height:1.55;max-width:700px}
+.project-info-strip{padding:0;margin:0 0 33px 36px;max-width:none;width:auto;gap:13px 17px;font-size:10.5px;line-height:1;align-items:center}
+.project-info-strip>span{gap:6px}
+.project-info-strip svg{width:13px;height:13px}
+.project-status-pill{padding:0!important;background:none!important;color:var(--text)!important;font-weight:530}
+.project-info-edit{background:transparent;border:0;border-radius:4px;padding:5px 6px;color:var(--faint);font-size:10px;display:flex;gap:5px;align-items:center}
+.project-info-edit:hover{background:var(--hover);color:var(--text)}
+.project-overview-section{background:transparent;border:0;border-radius:0;padding:0 0 25px;margin:0 0 21px;border-bottom:1px solid var(--line-subtle)}
+.project-overview-section:last-child{border-bottom:0}
+.project-overview-section .section-heading{margin-bottom:12px}
+.project-overview-section .section-heading h2{font-size:13px;font-weight:630;color:var(--text-strong)}
+.project-description-body{font-size:12.5px;line-height:1.75;color:var(--text)}
+.project-overview-main .project-overview-section:first-of-type{margin-top:12px}
+.project-overview-aside{border-left:1px solid var(--line-subtle);border-top:0;background:var(--bg);padding:19px 21px 60px;display:flex;flex-direction:column;gap:0}
+.project-overview-aside .section-heading{margin:0 0 13px}
+.project-overview-aside .section-heading h2{font-size:11.5px;font-weight:600}
+.project-property{flex-direction:row;align-items:flex-start;justify-content:space-between;gap:8px;min-height:28px;margin:0 0 7px}
+.project-property label{font-size:10px;color:var(--muted);white-space:nowrap;padding-top:2px}
+.project-property strong{font-size:10.5px;text-align:right;font-weight:530;max-width:170px}
+.project-teams-list{gap:6px;align-items:flex-end}
+.project-teams-list>span{font-size:10px;gap:5px}
+.project-teams-list .small-team-symbol{width:18px;height:18px;font-size:9px}
+.project-overview-progress{padding:13px 0 17px;margin-bottom:17px;border-bottom:1px solid var(--line-subtle)}
+.project-overview-progress .section-heading{margin-bottom:10px}
+.project-overview-progress .section-heading>span{font-size:10px}
+.project-overview-progress .project-progress-long{height:5px}
+.project-overview-progress .project-metrics{margin-top:14px;gap:3px}
+.project-overview-progress .project-metrics>div{gap:4px}
+.project-overview-progress .project-metrics strong{font-size:16px}
+.project-overview-progress .project-metrics span{font-size:9px}
+.project-aside-activity{border-top:1px solid var(--line-subtle);padding-top:17px;margin-top:6px}
+.project-aside-update{background:transparent;border:0;width:100%;display:flex;align-items:center;text-align:left;gap:8px;margin:4px 0 9px;padding:4px;color:var(--text)}
+.project-aside-update>span{font-size:10px;line-height:1.4}
+.project-aside-update small{display:block;font-size:9px;color:var(--faint)}
+.project-aside-muted{font-size:10.5px;color:var(--faint)}
+.project-resource-empty{border:0;background:transparent;padding:5px 0;font-size:11px;color:var(--faint)}
+.project-overview-section .milestone-overview-item{padding:7px 2px}
+.project-activity-page{max-width:1030px;padding:45px 55px 80px;margin:0 auto}
+.project-activity-heading .eyebrow{display:none}
+.project-activity-heading h2{font-size:19px;font-weight:650}
+.project-issues-view{max-width:none;padding:18px 25px 60px}
+.project-issues-view .issue-list{border:0;border-radius:0}
+.project-issues-view .issue-group{border-color:var(--line-subtle)}
+@media(max-width:1050px){.project-detail-layout{grid-template-columns:minmax(0,1fr) 245px}.project-overview-main{padding:42px 27px 65px}.project-overview-aside{padding:18px 14px}.project-directory-columns,.project-directory-row{grid-template-columns:minmax(160px,2fr) minmax(85px,1fr) minmax(70px,1fr) minmax(80px,1fr)}.project-directory-columns>*:nth-child(5),.project-directory-columns>*:nth-child(6),.project-directory-row>*:nth-child(5),.project-directory-row>*:nth-child(6){display:none}}
+@media(max-width:780px){.app:has(.project-detail-page) .sidebar,.app:has(.project-directory) .sidebar{position:fixed;width:232px;flex-basis:232px}.project-detail-layout{grid-template-columns:minmax(0,1fr)}.project-overview-aside{border-left:0;border-top:1px solid var(--line-subtle);padding:20px 27px}.project-detail-tabs{padding:0 11px}.project-nav-back{font-size:0!important}.project-overview-main{padding:33px 19px}.project-activity-page{padding:25px 18px}.project-directory{padding:0 12px 60px}.project-directory-columns,.project-directory-row{grid-template-columns:minmax(125px,2fr) minmax(80px,1fr) minmax(60px,.8fr)}.project-directory-columns>*:nth-child(4),.project-directory-row>*:nth-child(4){display:none}}

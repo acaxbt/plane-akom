@@ -1,3 +1,16 @@
+## V0.9 — Linear Projects visual parity pass (UI only)
+
+Reference: [Mobbin Linear Projects list](https://mobbin.com/flows/92790750-e63d-4355-a401-f1d5236bf981) and [Mobbin Linear Project details](https://mobbin.com/flows/dbc027fe-6642-4cec-912b-0e05b83edca6).
+
+- Project list uses flat, compact rows, column headings and minimal top filters, not a card/table panel.
+- Project detail tabs directly below the app's breadcrumb header: **Overview · Activity · Issues** only.
+- Overview moves project title and metadata into the central document column, not a full-width hero.
+- Removed prominent project summary/progress cards; project brief is an unboxed document section, while project progress and properties appear in the right rail.
+- Project stage workflow builder remains accessible from project options, not a top-level tab.
+- Fresh demo visitors default to the light theme used in reviewed Mobbin reference images. Existing persisted theme selection is retained.
+
+The goal is closer visual alignment, **not a claim of pixel-for-pixel identity**. No official Linear product assets were copied. All data and permissions remain simulated in the frontend.
+
 # AKOM UI V0.4 — Linear workspace model + cross-workspace issue grants
 
 An interactive React + Vite + TypeScript UI prototype. **No real authentication, database or server-side permission checks.** Demo data persists only in your browser's `localStorage`. The `akom-ui/` app is intentionally separate from the Plane fork; its `preview` branch is unchanged.
