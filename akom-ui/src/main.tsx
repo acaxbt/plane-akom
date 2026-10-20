@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, DragEvent, FormEvent, ReactNode, ChangeEvent } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createPortal } from 'react-dom';
-import { Flag, Paperclip, Link2, GitBranch, Settings2, Activity, GripVertical, ArrowDownUp, ArrowRight, ArrowUpRight, Bell, CalendarDays, Check, CheckCheck, CheckCircle2, ChevronLeft, ChevronDown, ChevronRight, Circle, CircleDashed, CircleDot, Clock3, CornerDownRight, Filter, Folder, Inbox, Keyboard, LayoutGrid, List, Menu, MoreHorizontal, PanelLeftClose, Plus, Search, Sparkles, Target, UserRound, Users, X, Zap, Sun, Moon, Copy, Pencil, AlignLeft, PanelLeftOpen, Layers2 } from 'lucide-react';
+import { Flag, Paperclip, Link2, GitBranch, Settings2, Activity, GripVertical, ArrowDownUp, ArrowRight, ArrowUpRight, Bell, CalendarDays, Check, CheckCheck, CheckCircle2, ChevronLeft, ChevronDown, ChevronRight, Circle, CircleDashed, CircleDot, Clock3, CornerDownRight, Filter, Folder, Inbox, Keyboard, LayoutGrid, List, Menu, MoreHorizontal, PanelLeftClose, Plus, Search, Sparkles, Target, UserRound, Users, X, Zap, Sun, Moon, Copy, Pencil, PanelLeftOpen, Layers2 } from 'lucide-react';
 import './style.css';
 
 type Status = 'Backlog' | 'Todo' | 'In Progress' | 'In Review' | 'Done' | 'Canceled';
