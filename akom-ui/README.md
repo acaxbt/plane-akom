@@ -1,58 +1,35 @@
-# AKOM UI · V0.3
+# AKOM UI V0.4 — Linear workspace model + cross-workspace issue grants
 
-A Linear-inspired **interactive React prototype** for AKOM. This is an independent frontend project, intentionally isolated from the Plane fork core. **No backend and no authentication are implemented yet.**
+An interactive React + Vite + TypeScript UI prototype. **No real authentication, database or server-side permission checks.** Demo data persists only in your browser's `localStorage`. The `akom-ui/` app is intentionally separate from the Plane fork; its `preview` branch is unchanged.
 
-## What works
+## Product model (Option B)
 
-- Sidebar navigation: My issues, Inbox, Projects, Initiatives, All issues, Board, Cycles
-- Issue lists grouped by status, list/board toggle, priority and workspace filters
-- Issue details: edit title/description/status/priority/assignee; add comments
-- Create issue from `C`, plus button, or command palette
-- Cross-workspace assignee picker with organization-wide member search and team grouping
-- Global My Issues per active demo persona; switch to any member to verify cross-workspace assignment end-to-end
-- `⌘K` / `Ctrl+K` command search; `Esc` to close
-- Real project drilldown filters, native Kanban drag-and-drop, inline due date editing
-- Search keyboard navigation, shortcut help (`?`), demo data reset
-- Demo persona switching, persistent dark/light mode, responsive sidebar
-- Changes persist in browser `localStorage` (prototype-only, not synchronized between devices)
+- **Workspace** is a real boundary: it owns workspace memberships, teams, projects and issues. The header switches among *only* the demo user's joined workspaces. No `All workspaces` filter exists.
+- **Teams** live inside one workspace. `Your Teams` lists only teams joined by the active member; **Explore teams** can join/leave any public team in the active workspace. Team sections have Issues/Cycles/Projects navigation.
+- **Projects** belong to one workspace and can be associated with multiple teams. Issue creation in that project can choose any of its participating teams.
+- **Issues** have exactly one owning team and one primary assignee. Within a workspace, users can view public team issues; an explicit assignment to a member who is not in the owning workspace grants an *issue-scoped demo view* only, never implicit membership or access to other projects/issues.
+- **My issues** shows the active workspace plus issues explicitly assigned to the viewer from workspaces the viewer has not joined. **Shared with me** isolates those external issue grants. Search is restricted to current-workspace issues and issues explicitly shared with the viewer.
+- **Organization-level directory** is used when assigning an issue. Assignees in the current workspace are shown first; people from other workspaces are grouped separately and marked as issue-scoped recipients.
+- Changing the assignee removes the previous recipient's demo access immediately. No parent/project links are available in external-issue view.
 
-## Local development
+## Ready-made scenarios
 
-Requires Node 22+ and npm. Install with `npm install`, run `npm run dev`, typecheck and production-build with `npm run build`.
+1. **Team hierarchy:** preview as Raka, choose **AKOM Product** in the top-left switcher. `Your Teams` contains Product Media. `Explore teams` shows Product Media and Product Data. Join Data; it appears under Your Teams with Issues/Cycles/Projects.
+2. **Multi-team projects:** in AKOM Product open **For You Experience**. You should see `MED-*` and `DAT-085`. Create a project and check both Media and Data teams. Create a Data-owned issue inside that project.
+3. **Switch workspace:** Raka is a member of Product and Operations, so both appear in the switcher. Studio does **not**, because Raka isn't a member.
+4. **Cross-workspace grant:** preview as **Alina** (AKOM Studio only). `MED-128` from Product appears in **My issues** and **Shared with me** because Alina is assigned. She cannot navigate into AKOM Product or see its project list.
+5. **Grant revocation:** switch to Raka in AKOM Product and reassign `MED-128` to Nadia. Switch back to Alina; the issue should disappear from Shared with me and search.
+6. **Inverse grant:** Raka has `DSN-052` assigned from AKOM Studio; it appears in Shared with me when Raka is in AKOM Product.
+7. **Create workspace:** from the workspace switcher choose Create workspace. New empty workspace includes only you as a member; add a team first, then a project and issues.
 
-## Deploy on Cloudflare Workers (static assets)
+## Dev and deploy
 
-Config `wrangler.jsonc` uses Workers Static Assets with `not_found_handling=single-page-application` for SPA routes. In Cloudflare, create an API token with Workers Scripts edit permissions, and save it to GitHub Actions as repository secret `CLOUDFLARE_API_TOKEN`; set your Cloudflare account ID as secret `CLOUDFLARE_ACCOUNT_ID`. This is not required for local development.
+Run `npm install && npm run dev` for local Vite development and `npm run build` for TypeScript + Vite production validation. Cloudflare `wrangler.jsonc` describes a Workers Static Assets deploy. GitHub Actions workflow `.github/workflows/akom-ui-cloudflare.yml` validates each PR and exports a compiled dist artifact. The preview Worker is `akom-ui-preview` in the connected Cloudflare account.
 
-To deploy manually on an authenticated machine:
+## UX reference
 
-```sh
-npm ci || npm install
-npm run build
-npx wrangler deploy
-```
+The navigation and workspace switcher follow patterns captured from [Linear — Switching workspaces](https://mobbin.com/flows/2774d352-5908-42ac-bc41-b5b41913cffd), [Workspace settings](https://mobbin.com/flows/820abf56-0781-456e-b6ed-98609be8edc9), and [Team issues](https://mobbin.com/flows/68d53c65-1f92-4961-b507-de4bf4ea0adf). Design inspiration only; no Linear copyrighted images or source code are included.
 
-A GitHub Actions workflow is provided separately in the repository root as `.github/workflows/akom-ui-cloudflare.yml` (only deployed on `feature/akom-ui-v0.1` branch through manual workflow dispatch).
+## Security and backend caveat
 
-## Reference designs
-
-- [Creating an issue — Mobbin/Linear](https://mobbin.com/flows/3528703d-a543-414c-8f6e-ccf2442bff2f)
-- [Issue details — Mobbin/Linear](https://mobbin.com/flows/fb8e3917-79bc-40c3-8c97-1e21b3c5a527)
-- [Adding assignee — Mobbin/Linear](https://mobbin.com/flows/0035680b-a877-444a-b27a-b76b38d10853)
-- [Team issues — Mobbin/Linear](https://mobbin.com/flows/68d53c65-1f92-4961-b507-de4bf4ea0adf)
-
-Design inspiration only. No third-party copyrighted images or app assets included.
-
-## Product architecture notes
-
-**Global organization user ID** is separate from workspace ownership. The prototype issues retain `workspace` and `assignee` independently to demonstrate cross-workspace workflows. In production the backend must enforce issue-scoped permissions, organization membership, attachment rules, and revocation. This prototype intentionally makes no security guarantees.
-
-Future backend: Cloudflare Workers/Hono, D1, R2, Durable Objects. The UI intentionally requires none of these services.
-
-## V0.3 — Issue list drag and creation flows
-
-- **List View:** drag an issue row using its grip to reorder it in a status group, drag it into another status group, or drop it on an empty group. The sort indicator switches to **Manual** when reordering. This uses desktop HTML drag-and-drop; touch dragging will require a later interaction pass.
-- **Cross-workspace assignee:** the directory popover is rendered through a React portal above the issue drawer and the Create Issue dialog. It is not clipped by scroll containers.
-- **Add Team:** click `+` next to YOUR TEAMS, set a name, unique 2–5 letter identifier, and owning workspace. New teams appear in the sidebar and are available to new issues. Creating a new issue from a team automatically selects that team.
-- **Add Project:** click `+` next to PROJECTS or **New project** on the Projects page. Select a lead team, then open the new project and create issues for it. Creating an issue while viewing a project preselects that project and its lead team.
-- Teams, projects and issues are stored in local browser storage for prototype testing. **Reset demo data** restores everything. No backend authentication or cross-workspace permissions are enforced yet.
+The prototype intentionally has **no real RBAC**, authorization, authentication, R2 permissions, session management, nor persistence shared across users. Client-side identity switching is a demo tool, not secure impersonation. Do not treat issue-level UI filtering as authorization. The backend must enforce tenant isolation, workspace membership, issue-scoped grants, revocation, attachments and relation redaction before production use.
