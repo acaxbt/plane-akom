@@ -71,3 +71,13 @@ The prototype intentionally has **no real RBAC**, authorization, authentication,
 - See [WORKFLOW_RESEARCH.md](WORKFLOW_RESEARCH.md) for official Linear docs, matching Mobbin flows, and the explicit distinction between native Linear capabilities and AKOM extensions.
 
 All changes remain localStorage demo state: workflow stages/triage and saved views are **not** production-grade permission boundaries or server-backed records.
+
+
+## V0.8 — Project information architecture correction (Mobbin)
+
+- **Projects** sidebar now opens a searchable and filterable project list, not a gallery of project cards.
+- Clicking a project opens its **Overview** by default, with **Overview / Activity / Issues** as the only main tabs.
+- Overview contains summary, properties, progress, milestones, resources placeholder, and recent activity. Milestones are managed inline, not on a separate top-level tab.
+- Activity supports posting demo project-health updates; all content remains browser-local.
+- Issues remains the home for project issue lists. AKOM-specific operational stages are optional via Issues' `Group by project stage` and project overflow settings. These are **not** represented as native Linear top-level project tabs.
+- See `PROJECT_UI_AUDIT.md` for canonical Mobbin links, Linear docs, and implementation boundaries.
