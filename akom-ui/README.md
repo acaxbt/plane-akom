@@ -1,4 +1,4 @@
-# AKOM UI · V0.1
+# AKOM UI · V0.2
 
 A Linear-inspired **interactive React prototype** for AKOM. This is an independent frontend project, intentionally isolated from the Plane fork core. **No backend and no authentication are implemented yet.**
 
@@ -9,9 +9,11 @@ A Linear-inspired **interactive React prototype** for AKOM. This is an independe
 - Issue details: edit title/description/status/priority/assignee; add comments
 - Create issue from `C`, plus button, or command palette
 - Cross-workspace assignee picker with organization-wide member search and team grouping
-- Global My issues view updates automatically when assigning to Raka; other workspace members are visible in the directory
+- Global My Issues per active demo persona; switch to any member to verify cross-workspace assignment end-to-end
 - `⌘K` / `Ctrl+K` command search; `Esc` to close
-- Dark/light theme toggle and responsive sidebar
+- Real project drilldown filters, native Kanban drag-and-drop, inline due date editing
+- Search keyboard navigation, shortcut help (`?`), demo data reset
+- Demo persona switching, persistent dark/light mode, responsive sidebar
 - Changes persist in browser `localStorage` (prototype-only, not synchronized between devices)
 
 ## Local development
