@@ -498,3 +498,10 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .project-issues-view .issue-list{border:0;border-radius:0;overflow:visible}
 @media(max-width:950px){.full-page .property-sidebar{width:205px;min-width:205px;max-width:205px;padding:16px 10px}.full-page .panel-content{padding:25px 27px 45px}}
 @media(max-width:650px){.full-page .panel-top{padding:0 10px}.full-page .panel-layout{display:block;overflow:auto;height:calc(100% - 43px)}.full-page .panel-content{padding:25px 19px;overflow:visible}.full-page .property-sidebar{width:100%;min-width:0;max-width:none;overflow:visible;border-left:0;border-top:1px solid var(--line);padding:19px}.issue-index-header{padding:0 14px}.content:has(.issue-index-header)>.list-toolbar,.content:has(.issue-index-header)>.tabs{padding-left:14px;padding-right:14px}.issue-list .group-heading,.issue-list .issue-row{padding-left:17px;padding-right:14px}.issue-list .issue-metadata .issue-workspace{display:none}}
+
+/* Linear-anchored inline issue title: same typography in view and edit state */
+.full-page .panel-issue-title{margin:0 auto 6px;display:block;line-height:1.33;font-size:23px;font-weight:640;letter-spacing:-.027em}
+.full-page .panel-issue-title .issue-inline-title{display:block;width:100%;min-height:35px;padding:3px 4px;margin:-3px -4px 0;box-sizing:border-box;resize:none;overflow:hidden;background:transparent;border:0;outline:0;border-radius:4px;font:inherit;line-height:inherit;letter-spacing:inherit;font-weight:inherit;color:var(--text-strong);box-shadow:none;white-space:pre-wrap}
+.full-page .panel-issue-title .issue-inline-title:hover:not([readonly]){background:var(--hover)}
+.full-page .panel-issue-title .issue-inline-title:focus{outline:0;background:transparent;box-shadow:none}
+.full-page .panel-issue-title .issue-inline-title[readonly]{cursor:default}
