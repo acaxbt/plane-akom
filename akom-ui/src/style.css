@@ -588,7 +588,6 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .full-page .property-tags{padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-weight:400}
 .detail-tag{font-size:11px;padding:3px 7px}
 .property-picker{margin:0;padding:5px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
-.picker-search{display:block;width:100%;min-width:0;padding:8px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font-size:12px;margin-bottom:5px;border-radius:3px}
 .date-picker{font-size:12px;min-width:0}
 .date-picker-panel,.label-picker-panel{padding:9px;border:1px solid var(--line);border-radius:7px;margin-top:8px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
 .date-picker-panel input{width:100%;min-width:0;font:inherit;color:var(--text);background:transparent;border:1px solid var(--line);padding:7px;border-radius:5px;color-scheme:light dark}

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { CalendarDays, Check, ChevronDown, Plus } from 'lucide-react';
+import { CalendarDays, Check, ChevronDown, Plus, Search } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
 import { Checkbox } from './components/ui/checkbox';
@@ -49,7 +49,7 @@ export function LabelPicker({ value, options, onChange, readOnly }: {
   return <div className="issue-labels property-block"><span className="property-heading">Labels</span>{readOnly ? tags :
     <Popover><PopoverTrigger asChild><Button className="label-trigger" aria-label="Edit labels">{tags}<Plus size={13}/></Button></PopoverTrigger>
       <PopoverContent className="label-picker-panel" align="start" onEscapeKeyDown={event => event.stopPropagation()}>
-        <Input className="picker-search" aria-label="Search or create label" placeholder="Search or create label…" value={query} onChange={event => setQuery(event.target.value)}/>
+        <div data-slot="command-input-wrapper"><Search size={16} className="shrink-0 opacity-50"/><Input data-slot="command-input" aria-label="Search or create label" placeholder="Search or create label…" value={query} onChange={event => setQuery(event.target.value)}/></div>
         {choices.filter(label => label.toLowerCase().includes(query.toLowerCase())).map(label => <label key={label}><Checkbox aria-label={label} checked={value.includes(label)} onCheckedChange={checked => onChange(checked === true ? [...value, label] : value.filter(item => item !== label))}/>{label}</label>)}
         {query.trim() && !choices.some(label => label.toLowerCase() === query.trim().toLowerCase()) && <Button className="text-link" onClick={() => { onChange([...value, query.trim()]); setQuery(''); }}><Plus size={13}/> Create “{query.trim()}”</Button>}
       </PopoverContent>
