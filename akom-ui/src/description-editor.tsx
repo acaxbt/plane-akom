@@ -6,9 +6,11 @@ import { descriptionContent, descriptionExtensions } from './description-content
 import type { DescriptionContent } from './description-content';
 import './description-editor.css';
 
-export function DescriptionEditor({ value, readOnly, onSave }: {
+export function DescriptionEditor({ value, readOnly, onSave, draft = false, onSubmit }: {
   value: DescriptionContent;
   readOnly: boolean;
+  draft?: boolean;
+  onSubmit?: (content: JSONContent) => void;
   onSave: (content: JSONContent) => void;
 }) {
   const wrapper = useRef<HTMLDivElement>(null);
@@ -31,7 +33,7 @@ export function DescriptionEditor({ value, readOnly, onSave }: {
       editing.current = true;
       setFocused(true);
     },
-    onUpdate: () => { dirty.current = true; },
+    onUpdate: ({ editor }) => { dirty.current = true; if (draft) onSave(editor.getJSON()); },
   });
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export function DescriptionEditor({ value, readOnly, onSave }: {
 
   const finish = (cancel = false) => {
     if (!editor || readOnly) return;
-    if (cancel && baseline.current) editor.commands.setContent(baseline.current, false);
+    if (cancel && baseline.current) { editor.commands.setContent(baseline.current, false); if (draft) onSave(baseline.current); }
     else if (dirty.current) onSave(editor.getJSON());
     dirty.current = false;
     editing.current = false;
@@ -55,7 +57,9 @@ export function DescriptionEditor({ value, readOnly, onSave }: {
       if (event.key === 'Escape') {
         event.preventDefault(); event.stopPropagation(); finish(true); editor.commands.blur();
       } else if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
-        event.preventDefault(); event.stopPropagation(); finish(); editor.commands.blur();
+        event.preventDefault(); event.stopPropagation();
+        if (draft) onSubmit?.(editor.getJSON());
+        else { finish(); editor.commands.blur(); }
       }
     }}>
     <EditorContent editor={editor} />
@@ -94,6 +98,6 @@ export function DescriptionEditor({ value, readOnly, onSave }: {
         }}><input autoFocus aria-label="Link URL" placeholder="https://…" value={linkURL} onChange={event => setLinkURL(event.target.value)} /><button type="submit" aria-label="Apply link"><Check size={15} /></button>{linkError && <small role="alert">{linkError}</small>}</form>}
       </div>
     </BubbleMenu>}
-    {focused && !readOnly && <div className="description-edit-actions"><span>Esc to cancel · ⌘/Ctrl+Enter to save</span><button type="button" className="bare-icon" aria-label="Cancel description editing" onClick={() => { finish(true); editor.commands.blur(); }}><X size={14} /></button><button type="button" className="light-button" onClick={() => { finish(); editor.commands.blur(); }}>Save <Check size={14} /></button></div>}
+    {focused && !readOnly && !draft && <div className="description-edit-actions"><span>Esc to cancel · ⌘/Ctrl+Enter to save</span><button type="button" className="bare-icon" aria-label="Cancel description editing" onClick={() => { finish(true); editor.commands.blur(); }}><X size={14} /></button><button type="button" className="light-button" onClick={() => { finish(); editor.commands.blur(); }}>Save <Check size={14} /></button></div>}
   </div>;
 }

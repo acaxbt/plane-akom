@@ -1,3 +1,15 @@
+## V0.15 — Property rails and issue creation
+
+Issue and project rails use wider responsive columns, readable wrapping values, and shared property pickers. The issue rail groups basic properties, labels, and project/milestone/stage controls; the unused ellipsis is removed. All issue properties remain available below the document on mobile. External assignment restrictions remain in place.
+
+Project Overview orders Properties, Milestones, Progress, and Activity. Properties use aligned label/value rows. Milestone management keeps the existing board in the main workspace, opened through Manage in the rail; creation and editing remain available.
+
+Create issue uses the existing Tiptap editor with live draft state, compact title and property chips, and a subtle title focus indicator. New descriptions persist as rich JSON, while existing text descriptions remain supported. Cmd/Ctrl+Enter captures the document before the editor's hard-break command, including when text is selected. Date controls retain the browser date selector behind a shared compact trigger. Labels use individual checkboxes with search and a create-label action instead of comma-separated text.
+
+Validation: 23 unit tests, TypeScript and production build. Added checks cover picker Escape/focus restoration and safe form buttons, individual/protected labels, protected dates, and rich draft capture including selected-text submission. Browser verification uses the isolated port 4174 origin; the main preview's data is preserved.
+
+Scope remains a browser-local prototype. No backend, shared storage, estimate field, project members, or complete Linear editor parity is added. Existing JavaScript bundle-size warning remains.
+
 ## V0.14 — Team cycles
 
 Cycles now uses saved planning windows rather than the hard-coded Cycle 42, date range and 64% progress. The [Linear enabling-cycles flow on Mobbin](https://mobbin.com/flows/408edcc5-30a9-495d-b985-fcbaa924306c) establishes team-level scheduling; AKOM reuses its shared flat lists, tabs and property controls for a smaller manual workflow.

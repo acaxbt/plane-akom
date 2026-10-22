@@ -6,7 +6,7 @@
 @media(min-width:1600px){.content-board{padding-left:50px;padding-right:50px}}
 @media(max-width:1180px){.issue-workspace{display:none}.panel-content{padding:28px}.property-sidebar{width:230px}}
 @media(max-width:780px){.sidebar{position:fixed;top:0;bottom:0;left:0;transform:translateX(-100%);z-index:30;box-shadow:var(--shadow)}.sidebar.mobile-open{transform:translateX(0)}.mobile-shade{display:block;position:fixed;inset:0;background:#0009;border:0;z-index:29}.mobile-menu{display:inline-grid}.topbar{padding:0 16px}.top-meta{display:none}.content,.content-board{padding:0 var(--page-gutter) 35px}.issue-row{gap:9px;padding:0 10px}.issue-id{min-width:55px;font-size:10px}.issue-metadata{gap:8px}.issue-tag{display:none}.worklist-foot>span:last-child{display:none}.property-sidebar{width:205px;padding:20px 14px}.panel-content{padding:26px}.panel-issue-title{font-size:21px}.projects-grid{grid-template-columns:1fr}}
-@media(max-width:580px){.page-head{align-items:flex-start}.page-head>.primary-button{font-size:0;width:36px;min-width:36px;padding:0}.page-head>.primary-button svg{flex-shrink:0}.page-head>.primary-button kbd{display:none}.page-heading p{max-width:285px;font-size:11.5px}.list-toolbar{align-items:flex-start}.filter-wrap{font-size:10px}.right-tools .toolbar-button span{display:none}.issue-title{font-size:11.5px}.issue-row .priority-bars{display:none}.issue-metadata{gap:7px}.worklist-foot{font-size:9px}.issue-panel{width:100%}.panel-layout{flex-direction:column;overflow-y:auto}.panel-content{overflow:visible;order:2;padding:22px}.property-sidebar{width:100%;order:1;border-left:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:15px 18px}.property-heading{grid-column:1/-1;margin:0}.property-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;grid-column:1/-1}.property-block{min-width:0}.property-block label{font-size:10px}.property-value,.property-static{font-size:10.5px;min-width:0}.property-value>span:nth-child(2){min-width:0}.property-sidebar .properties-divider,.security-note{display:none}.property-sidebar>.property-block{display:none}.assignee-popover{left:auto;right:-60px;width:min(93vw,300px)}.panel-top{padding:0 12px}.prototype-badge{display:none}.create-header select{max-width:117px}.create-body{padding:17px}.create-footer-right>span{display:none}.create-project-select select{max-width:110px}.cycles-header{flex-direction:column;align-items:stretch}}
+@media(max-width:580px){.page-head{align-items:flex-start}.page-head>.primary-button{font-size:0;width:36px;min-width:36px;padding:0}.page-head>.primary-button svg{flex-shrink:0}.page-head>.primary-button kbd{display:none}.page-heading p{max-width:285px;font-size:11.5px}.list-toolbar{align-items:flex-start}.filter-wrap{font-size:10px}.right-tools .toolbar-button span{display:none}.issue-title{font-size:11.5px}.issue-row .priority-bars{display:none}.issue-metadata{gap:7px}.worklist-foot{font-size:9px}.issue-panel{width:100%}.panel-layout{flex-direction:column;overflow-y:auto}.panel-content{overflow:visible;order:2;padding:22px}.property-sidebar{width:100%;order:1;border-left:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:15px 18px}.property-heading{grid-column:1/-1;margin:0}.property-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;grid-column:1/-1}.property-block{min-width:0}.property-block label{font-size:10px}.property-value,.property-static{font-size:10.5px;min-width:0}.property-value>span:nth-child(2){min-width:0}.property-sidebar .properties-divider,.security-note{display:none}.assignee-popover{left:auto;right:-60px;width:min(93vw,300px)}.panel-top{padding:0 12px}.prototype-badge{display:none}.create-header select{max-width:117px}.create-body{padding:17px}.create-footer-right>span{display:none}.create-project-select select{max-width:110px}.cycles-header{flex-direction:column;align-items:stretch}}
 
 /* AKOM v0.2: cohesive keyboard-first, interactive preview refinements */
 .top-profile{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;border-radius:50%;padding:2px}
@@ -581,3 +581,81 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .project-teams-editor .simple-popover>label{display:flex;align-items:center;gap:8px;min-height:32px;font-size:11.5px;color:var(--text);padding:5px}
 .project-teams-editor input{accent-color:var(--accent)}
 @media(max-width:780px){:root{--page-gutter:14px}.topbar{padding:0 14px}.sidebar.mobile-open{width:var(--sidebar-width);flex-basis:var(--sidebar-width)}.project-inline-properties .property-display{white-space:normal}}
+
+/* Property rails share a compact rhythm; narrow screens keep every field available. */
+.full-page .property-sidebar{width:clamp(280px,21vw,340px);min-width:280px;max-width:340px;padding:22px 18px;display:block}
+.full-page .rail-section{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line-subtle)}
+.full-page .property-heading{font-size:12px;color:var(--text);margin:0 0 10px;font-weight:600}
+.full-page .property-list{display:flex;flex-direction:column;gap:3px}
+.full-page .property-block{display:block;margin:0;min-height:0}
+.full-page .property-value,.full-page .property-static{font-size:12.5px;min-height:34px;padding:7px 6px;gap:9px;height:auto}
+.property-display{min-width:0;overflow-wrap:anywhere;text-align:left;line-height:1.5}
+.property-display svg{flex-shrink:0}
+.property-value{white-space:normal;text-align:left;min-width:0}
+.property-value>svg:last-child{flex-shrink:0;margin-left:auto}
+.project-related-properties{margin:3px 0 0 9px;padding-left:10px;border-left:1px solid var(--line)}
+.rail-field-caption{display:block;font-size:11px;color:var(--muted);padding:12px 6px 2px}
+.issue-labels>summary{font-size:12px;font-weight:600;color:var(--text);gap:10px}
+.full-page .property-tags{padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-weight:400}
+.detail-tag{font-size:11px;padding:3px 7px}
+.property-picker{position:fixed;z-index:160;margin:0;padding:5px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+.property-picker-options button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:34px;height:auto;padding:7px 9px;font-size:12px;white-space:normal;overflow-wrap:anywhere}
+.property-picker-options button[hidden]{display:none}
+.property-picker-options button[aria-pressed=true]{background:var(--accent-tint)}
+.picker-search{display:block;width:100%;min-width:0;padding:8px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font-size:12px;margin-bottom:5px;border-radius:3px}
+.date-picker{font-size:12px;min-width:0}
+.date-picker>summary{display:flex;align-items:center;gap:9px;list-style:none;cursor:pointer;min-height:34px;padding:7px 6px;border-radius:5px;color:var(--text)}
+.date-picker>summary:hover{background:var(--hover)}
+.date-picker>summary[aria-disabled=true]{cursor:default;color:var(--muted)}
+.date-picker-panel,.label-picker-panel{padding:9px;border:1px solid var(--line);border-radius:7px;margin-top:8px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.date-picker-panel input{width:100%;min-width:0;font:inherit;color:var(--text);background:transparent;border:1px solid var(--line);padding:7px;border-radius:5px;color-scheme:light dark}
+:root[data-theme=light] .date-picker-panel input{color-scheme:light}
+.label-picker-panel label{display:flex!important;align-items:center;gap:8px;padding:5px!important;color:var(--text)!important;font-size:12px!important;cursor:pointer}
+.label-picker-panel input[type=checkbox]{accent-color:var(--accent)}
+.project-detail-layout{grid-template-columns:minmax(0,1fr) clamp(320px,26vw,400px)}
+.project-overview-aside{padding:22px 20px 40px;min-width:0}
+.project-inline-properties{gap:7px}
+.project-inline-properties>.property-block{display:grid;grid-template-columns:80px minmax(0,1fr);align-items:start;gap:10px;margin:0;min-height:34px}
+.project-inline-properties>.property-block>label{display:block;font-size:12px;color:var(--muted);padding-top:8px}
+.project-inline-properties .property-value,.project-inline-properties .property-static{font-size:12px;min-height:34px;height:auto}
+.project-inline-properties .popover-root,.project-inline-properties .project-teams-editor{min-width:0}
+.project-teams-editor summary{flex-wrap:wrap;padding:7px 6px}
+.project-rail-milestones{border-top:1px solid var(--line-subtle);margin-top:20px;padding-top:20px}
+.project-rail-milestones .milestone-overview-item{padding:8px 0;gap:8px}
+.project-rail-milestones .milestone-overview-item>div{min-width:0;flex:1}
+.project-rail-milestones .milestone-overview-item strong{font-size:12px;white-space:normal;line-height:1.5}
+.project-rail-milestones .milestone-overview-item small{font-size:10px}
+.project-overview-progress{padding-top:20px;margin:18px 0 0;border-top:1px solid var(--line-subtle);border-bottom:0}
+.assignee-popover .picker-meta{display:none}
+.assignee-popover .picker-member{min-height:36px;padding:6px 10px}
+.assignee-popover .member-details small{font-size:10px}
+.assignee-popover .picker-footer{font-size:10px}
+.create-modal{width:min(720px,calc(100vw - 32px));border-color:var(--line);border-radius:12px;overflow:visible}
+.create-header{padding:10px 16px 3px;border:0;flex-shrink:0}
+.create-header>div{gap:5px;font-size:11px}
+.create-header .small-team-symbol{width:18px;height:18px;font-size:10px}
+.create-header .property-value{font-size:11px;min-height:26px;height:auto;padding:3px 4px;gap:4px;width:auto}
+.create-body{padding:10px 20px 16px;min-height:0;overflow-y:auto}
+.create-title{font-size:16px;font-weight:600;line-height:1.5;padding:5px 0;margin:0 0 4px;letter-spacing:-.015em;border-radius:3px}
+.create-title:focus-visible{outline:0;box-shadow:0 1px var(--accent)}
+.create-body .issue-wysiwyg{font-size:13px}
+.create-body .tiptap{min-height:76px;padding:5px 0 12px}
+.create-props{gap:6px;margin-top:14px}
+.create-props>.popover-root,.create-props>.assignee-root{min-width:0;max-width:100%}
+.create-props .property-value{border:1px solid var(--line);border-radius:6px;height:28px;min-height:28px;padding:3px 7px;gap:5px;font-size:11px;max-width:220px}
+.create-props .property-value>svg:last-child{display:none}
+.create-props .property-display,.create-props .assignee-root .property-value>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.create-props .avatar{width:17px!important;height:17px!important;font-size:8px!important}
+.create-footer{padding:9px 16px 12px;border-top:0;flex-shrink:0;justify-content:space-between}
+.create-hint{font-size:10px;color:var(--faint)}
+.create-footer .primary-button{font-size:11px;min-height:30px;padding:6px 11px}
+@media(max-width:1050px){.project-detail-layout{grid-template-columns:minmax(0,1fr) 300px}}
+@media(max-width:950px){.full-page .property-sidebar{width:260px;min-width:260px;max-width:260px;padding:18px 14px}}
+@media(max-width:780px){.project-detail-layout{grid-template-columns:minmax(0,1fr)}.project-overview-aside{border-left:0;border-top:1px solid var(--line);padding:22px 20px}.project-inline-properties>.property-block{grid-template-columns:90px minmax(0,1fr)}}
+@media(max-width:650px){.full-page .property-sidebar{width:100%;min-width:0;max-width:none;padding:22px 19px;display:block}.full-page .property-sidebar>.property-block{display:block}.full-page .property-list{display:flex;grid-column:auto}.full-page .property-sidebar .rail-section{display:block}.create-modal{max-height:calc(100dvh - 32px);width:calc(100vw - 24px)}.create-header{padding:9px 12px 2px}.create-header .property-value{max-width:165px}.create-body{padding:10px 15px 14px}.create-footer{padding:8px 12px 12px}.create-hint{font-size:9px}.create-title{font-size:16px}}
+.create-header .popover-root{width:auto;flex:0 1 auto;min-width:0}
+.create-header>div>span:last-child{white-space:nowrap}
+.create-props>.popover-root,.create-props>.assignee-root{width:auto;flex:0 1 auto}
+.create-props .property-value{width:auto}
+
+.create-modal .create-body .tiptap{min-height:76px;padding:5px 0 12px}
