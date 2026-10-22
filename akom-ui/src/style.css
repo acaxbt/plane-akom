@@ -484,6 +484,45 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .full-page .panel-issue-title .issue-inline-title:focus{outline:0;background:transparent;box-shadow:inset 0 -1px var(--line)}
 .full-page .panel-issue-title .issue-inline-title[readonly]{cursor:default}
 
+.cycles-page{padding-bottom:30px}
+.cycles-page .entity-page-header{margin-bottom:3px}
+.cycles-page .page-head{margin-bottom:0}
+.cycles-page .tabs{margin-bottom:0}
+.cycle-directory{margin-bottom:28px}
+.cycle-directory-columns,.cycle-directory-row{display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(180px,1.4fr) 60px 70px;gap:15px;align-items:center;padding:12px 9px}
+.cycle-directory-columns{font-size:10px;color:var(--faint);border-bottom:1px solid var(--line)}
+.cycle-directory-row{width:100%;border:0;border-bottom:1px solid var(--line-subtle);background:transparent;color:var(--muted);text-align:left;font-size:11px;min-height:48px}
+.cycle-directory-row:hover{background:var(--hover)}
+.cycle-directory-row.is-selected{background:var(--accent-tint)}
+.cycle-directory-name{display:flex;gap:9px;align-items:center;flex-wrap:wrap;min-width:0}
+.cycle-directory-name>svg{color:var(--faint);flex-shrink:0}
+.cycle-directory-name>strong{font-weight:550;color:var(--text);overflow-wrap:anywhere}
+.cycle-directory-name>small{font-size:9px;color:var(--faint)}
+.cycle-directory-name>small.cycle-current{color:var(--accent)}
+.cycle-directory-dates{font-size:10.5px;line-height:1.6}
+.cycle-detail-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:13px}
+.cycle-detail-heading h2{font-size:14px;font-weight:640;color:var(--text-strong);margin:0 0 7px;overflow-wrap:anywhere}
+.cycle-detail-heading p{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;line-height:1.6}
+.cycle-detail-actions{display:flex;gap:7px;align-items:center;flex-shrink:0}
+.cycle-completion{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10.5px;color:var(--muted);margin-bottom:20px}
+.cycle-completion>.progress-rail{width:110px;height:4px}
+.cycle-completion>strong{font-size:10.5px;font-weight:500}
+.cycle-completion>small{font-size:10px;color:var(--faint)}
+.cycle-detail .issue-list .group-heading,.cycle-detail .issue-list .issue-row{padding-left:10px;padding-right:10px}
+.cycle-form-dates{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.cycle-issue-search{display:flex;gap:9px;align-items:center;padding:12px 22px;border-bottom:1px solid var(--line);color:var(--faint)}
+.cycle-issue-search input{border:0;background:transparent;color:var(--text);outline:none;width:100%;font-size:12px;padding:5px 0}
+.cycle-assignment-list{overflow:auto;max-height:340px;padding:6px 16px}
+.cycle-assignment-row{display:flex;align-items:center;gap:9px;min-height:43px;padding:7px 5px;border-radius:4px;font-size:11px;cursor:pointer}
+.cycle-assignment-row:hover{background:var(--hover)}
+.cycle-assignment-row input{accent-color:var(--accent);flex-shrink:0}
+.cycle-assignment-row>span{color:var(--faint);font-size:10px;flex-shrink:0}
+.cycle-assignment-row strong{font-size:11.5px;font-weight:500;flex:1;min-width:0;line-height:1.5}
+.cycle-assignment-row small{color:var(--muted);font-size:10px;flex-shrink:0}
+.cycle-issues-modal .entity-modal-actions>small{font-size:10px;color:var(--muted);line-height:1.6;margin-right:auto;max-width:330px}
+@media(max-width:950px){.cycle-detail-heading{align-items:flex-start;flex-direction:column}.cycle-directory-columns,.cycle-directory-row{grid-template-columns:minmax(130px,1fr) minmax(145px,1fr) 45px 55px;gap:9px}}
+@media(max-width:650px){.cycle-directory-columns,.cycle-directory-row{grid-template-columns:minmax(95px,1fr) 125px 35px;padding-left:3px;padding-right:3px;gap:8px}.cycle-directory-columns>:last-child,.cycle-directory-row>:last-child{display:none}.cycle-directory-name{gap:5px}.cycle-directory-name>small{width:100%;margin-left:20px}.cycle-directory-dates{font-size:10px}.cycle-detail-actions{flex-wrap:wrap}.cycle-form-dates{grid-template-columns:1fr}.cycle-assignment-row{gap:6px}.cycle-assignment-row small{display:none}.cycle-issues-modal .entity-modal-actions{flex-wrap:wrap}.cycle-issues-modal .entity-modal-actions>small{max-width:220px}}
+
 .home-page{max-width:1040px;margin:0 auto;padding:26px 0 32px}
 .home-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:28px}
 .home-header .page-head{margin:0;min-height:0}

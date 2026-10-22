@@ -1,3 +1,18 @@
+## V0.14 — Team cycles
+
+Cycles now uses saved planning windows rather than the hard-coded Cycle 42, date range and 64% progress. The [Linear enabling-cycles flow on Mobbin](https://mobbin.com/flows/408edcc5-30a9-495d-b985-fcbaa924306c) establishes team-level scheduling; AKOM reuses its shared flat lists, tabs and property controls for a smaller manual workflow.
+
+- Create or edit a cycle's name and inclusive start/end dates. New cycles default to 14 days, beginning today or after the team's latest scheduled cycle. Invalid dates, reversed ranges and overlapping windows in the same team are rejected. Other teams may use the same dates.
+- All / Current / Upcoming / Past filters use the browser's local calendar date. The page refreshes its date each minute. Progress is computed from assigned team issues: Done / non-canceled issues, with canceled exclusions shown explicitly.
+- Manage issues adds or removes existing issues from the same team. Checkbox changes save immediately. Issues already in another cycle can be moved or cleared through the Issue cycle property; one issue belongs to at most one cycle.
+- New issue inside a cycle creates an issue in that cycle when its owning team matches. Changing the create form to a different team does not attach it to the original cycle.
+- Cycle records persist under `akom_ui_v014_cycles`; assignments use optional `Issue.cycleId` in existing records. Previous data is not reset and issues are not bulk-assigned. First-time visitors start with an empty cycle list. Reset demo data clears cycles too.
+- Team and cycle selection survive refresh and detail-page history navigation. External issue assignees see neither the cycle picker nor private cycle names. Workspace membership and team ownership are checked before cycle changes.
+
+Validation: 18 unit tests pass, including malformed stored records, date boundaries/leap days, overlap isolation, team/workspace assignment boundaries and progress changes. Browser checks covered create/edit, Current/Upcoming/Past, overlap errors, management search/assignment, moving issues across cycles, creating an issue inside a cycle, persistence, canceled progress, team refresh/navigation, external-assignee restrictions, dark mode, and a 390px mobile layout/dialog with no horizontal page overflow. Test records stayed on the separate port 4174 origin.
+
+Scope: manual cycles with browser-local persistence. Automatic cycle generation, cooldowns, rollover, burndown/history charts, deletion and cycle settings are not implemented. Ending a cycle does not move its unfinished issues. No server-side authorization or shared persistence is added.
+
 ## V0.13 — Personal workspace Home
 
 New visits open Home, with an entry above My issues in the shared sidebar. Switching member or workspace also returns to Home. History entries retain the source view when opening an issue or project, so browser Back returns to the corresponding page; existing deep links keep working.
