@@ -590,8 +590,6 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .property-picker{margin:0;padding:5px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
 .date-picker{font-size:12px;min-width:0}
 .date-picker-panel,.label-picker-panel{padding:9px;border:1px solid var(--line);border-radius:7px;margin-top:8px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
-.date-picker-panel input{width:100%;min-width:0;font:inherit;color:var(--text);background:transparent;border:1px solid var(--line);padding:7px;border-radius:5px;color-scheme:light dark}
-:root[data-theme=light] .date-picker-panel input{color-scheme:light}
 .label-picker-panel label{display:flex!important;align-items:center;gap:8px;padding:5px!important;color:var(--text)!important;font-size:12px!important;cursor:pointer}
 .label-picker-panel input[type=checkbox]{accent-color:var(--accent)}
 .project-detail-layout{grid-template-columns:minmax(0,1fr) clamp(320px,26vw,400px)}

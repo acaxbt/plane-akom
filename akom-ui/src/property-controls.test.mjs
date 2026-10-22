@@ -23,9 +23,10 @@ const { createRoot } = await import('react-dom/client');
 const { Tooltip } = await import('radix-ui');
 await mkdir('node_modules/.cache', { recursive: true });
 const temp = await mkdtemp(resolve('node_modules/.cache/akom-controls-'));
-await build({ entryPoints: ['src/property-controls.tsx', 'src/description-editor.tsx', 'src/components/app-dialog.tsx', 'src/components/ui/button.tsx'], outdir: temp, outExtension: { '.js': '.mjs' }, bundle: true, packages: 'external', format: 'esm', loader: { '.css': 'empty' }, jsx: 'automatic' });
+await build({ entryPoints: ['src/property-controls.tsx', 'src/description-editor.tsx', 'src/components/app-dialog.tsx', 'src/components/ui/button.tsx', 'src/components/ui/date-input.tsx'], outdir: temp, outExtension: { '.js': '.mjs' }, bundle: true, packages: 'external', format: 'esm', loader: { '.css': 'empty' }, jsx: 'automatic' });
 const { PopSelect, LabelPicker, DateProperty } = await import(pathToFileURL(`${temp}/property-controls.mjs`));
 const { Button } = await import(pathToFileURL(`${temp}/components/ui/button.mjs`));
+const { DateInput } = await import(pathToFileURL(`${temp}/components/ui/date-input.mjs`));
 const { dialogReturnTarget } = await import(pathToFileURL(`${temp}/components/app-dialog.mjs`));
 const { DescriptionEditor } = await import(pathToFileURL(`${temp}/description-editor.mjs`));
 after(async () => { await rm(temp, { recursive: true, force: true }); browser.happyDOM.cancelAsync(); });
@@ -79,10 +80,21 @@ test('date input and clear action both update the property', async () => {
   const cleanup = await mount(h(DateProperty, { value: '', label: 'Due date', onChange: value => selected = value }));
   await click(document.querySelector('button[aria-label="Due date"]'));
   const input = document.querySelector('input[type=date]');
+  assert.equal(input.dataset.slot, 'date-input');
   await act(async () => { input.value = '2026-11-12'; input.dispatchEvent(new browser.Event('input', { bubbles: true })); });
   assert.equal(selected, '2026-11-12');
   await click(document.querySelector('.date-picker-panel button'));
   assert.equal(selected, '');
+  await cleanup();
+});
+
+test('shared date input forwards required and minimum date constraints', async () => {
+  const cleanup = await mount(h(DateInput, { required: true, min: '2026-11-12', 'aria-label': 'End date' }));
+  const input = document.querySelector('input[type=date]');
+  assert.equal(input.validity.valueMissing, true);
+  assert.equal(input.min, '2026-11-12');
+  input.value = '2026-11-12';
+  assert.equal(input.checkValidity(), true);
   await cleanup();
 });
 

@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { CalendarDays, Check, ChevronDown, Plus, Search } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
+import { DateInput } from './components/ui/date-input';
 import { Checkbox } from './components/ui/checkbox';
 import { Popover, PopoverContent, PopoverTrigger } from './components/ui/popover';
 import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from './components/ui/command';
@@ -34,7 +35,8 @@ export function DateProperty({ value, onChange, label, disabled = false }: {
   if (disabled) return <div className="property-static" aria-label={label}><CalendarDays size={15}/>{value ? date : 'No due date'}<span className="issue-property-locked">Owner-managed</span></div>;
   return <Popover><PopoverTrigger asChild><Button className="property-value date-trigger" aria-label={label}><CalendarDays size={15}/><span>{date}</span></Button></PopoverTrigger>
     <PopoverContent className="date-picker-panel" align="start" onEscapeKeyDown={event => event.stopPropagation()}>
-      <Input type="date" aria-label={`Choose ${label.toLowerCase()}`} value={value} onInput={event => onChange(event.currentTarget.value)}/>
+      <span className="date-picker-heading">{label}</span>
+      <DateInput aria-label={`Choose ${label.toLowerCase()}`} value={value} onInput={event => onChange(event.currentTarget.value)}/>
       <Button className="text-link" onClick={() => onChange('')}>Clear date</Button>
     </PopoverContent>
   </Popover>;
