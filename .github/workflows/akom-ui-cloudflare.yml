@@ -1,0 +1,53 @@
+name: AKOM UI — Build & Cloudflare Preview
+
+on:
+  pull_request:
+    paths:
+      - "akom-ui/**"
+      - ".github/workflows/akom-ui-cloudflare.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build AKOM prototype
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: akom-ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: akom-ui-v02-dist
+          path: akom-ui/dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    name: Deploy to Cloudflare Workers
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feature/akom-ui-v0.1'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: akom-ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: akom-ui
+          command: deploy
