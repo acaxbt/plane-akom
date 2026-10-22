@@ -1,3 +1,17 @@
+## V0.16 — Shared shadcn components
+
+The standalone AKOM prototype now uses owned shadcn/ui components generated with CLI 4.22.1 and the Radix foundation. Tailwind utilities are integrated with Vite without enabling preflight, preserving AKOM typography, light/dark tokens, sidebar widths and page spacing. The component code lives in `src/components/ui`; application adaptations remain in shared controls and AKOM styles.
+
+- All application buttons, inputs, textareas, selects and checkboxes use shared primitives. The 12 existing dialogs share a focus-managed Dialog wrapper; mobile navigation also uses Dialog. AlertDialog replaces browser confirmations, and Sonner replaces the custom toast.
+- Property and assignee pickers use Popover + Command. Label selection and date entry use shared popovers, and project actions use DropdownMenu. Persona/workspace menus use Popover; the header persona menu anchors to its own trigger on mobile.
+- Project sections use linked Tabs/TabPanel semantics. My issues and Cycle filters use single-selection ToggleGroup because they filter a shared result view. Expandable details use Collapsible; titled buttons share Tooltip behavior while retaining their visible accessible labels.
+- Existing storage keys and records are unchanged. Workspace labels use current records, and unread Inbox counts derive from visible unread events. Initial members/issues/projects and the activity feed remain explicitly demo data.
+- Tiptap, boards, issue rows, progress calculations and milestone management retain their domain behavior. Date/file/color inputs retain browser-native behavior through Input; NativeSelect is intentional for simple form and inline selectors.
+
+Validation: 26 tests, production build, source coverage audit and 18 browser check groups on isolated port 4174. See [migration plan](MIGRATION_PLAN.md) and [self-check report](MIGRATION_SELF_CHECK.md). No browser errors/warnings were captured in the fresh production preview used for the final checks.
+
+Known limits: no physical-device or cross-browser matrix; browser-local demo persistence and permissions remain. Vite reports the existing large-bundle warning. `npm audit --omit=dev` reports 30 moderate advisories in the existing Tiptap 2/Markdown dependency chain (zero high/critical); suggested fixes require major editor upgrades and are not applied as part of this UI migration.
+
 ## V0.15 — Property rails and issue creation
 
 Issue and project rails use wider responsive columns, readable wrapping values, and shared property pickers. The issue rail groups basic properties, labels, and project/milestone/stage controls; the unused ellipsis is removed. All issue properties remain available below the document on mobile. External assignment restrictions remain in place.
