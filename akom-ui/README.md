@@ -1,3 +1,39 @@
+## V0.12 — Shared shell and consistent project controls
+
+- Issues, Projects, Inbox and team pages share the same sidebar width, header height, search and navigation row dimensions. Removed project-specific shell overrides; page titles, tabs and header actions use shared styles.
+- Board layouts retain the shared horizontal page gutter and a 16px gap below the toolbar, including boards opened from My issues.
+- Global and team Projects retain their active navigation context when opening a project and returning to its list. Collapsed navigation keeps accessible labels, and mobile issue pages can reopen the full sidebar.
+- Project Status, Lead, Target date and Teams edit directly in the Properties rail using existing controls. Changes persist in browser storage; at least one team remains selected. The full project-edit dialog remains available.
+- Triage summaries support rich-text descriptions. Saving with Cmd/Ctrl+Enter is intercepted before the editor's hard-break command, preserving selected text; Escape still restores the editing baseline.
+
+Validation: eight unit tests pass, and the production build succeeds. Browser checks covered shared dimensions across routes, global/team active navigation, back navigation, property persistence after refresh, last-team protection, popup Escape, collapsed navigation, light/dark themes, external-assignee restrictions, and Projects/issue navigation at a verified 390px viewport with no horizontal page overflow. A selected-text save regression was reproduced and verified fixed; the saved rich description also appears in Triage. Browser changes used a separate origin on port 4174, preserving the main preview's demo data.
+
+Scope remains a browser-local prototype. No backend, production authorization or full Linear feature parity is added. Vite still reports a large JavaScript bundle after adding the rich editor.
+
+## V0.11 — Inline WYSIWYG issue descriptions
+
+Based on the selected-text toolbar in [Linear — Formatting text](https://mobbin.com/flows/00af76be-27f3-479c-a4ed-3ad9d527bf9c).
+
+Issue descriptions now use Tiptap 2, the editor engine already used by Plane, with one document surface for reading and editing. Selecting text opens a floating formatting toolbar. Bold, italic, underline, strikethrough, headings, quotes, inline code, links, bullet/numbered lists and checklists render while editing. Keyboard formatting and undo/redo use the editor's native commands. Leaving the editor or pressing Cmd/Ctrl+Enter saves; Escape restores the document from the start of the edit.
+
+Existing Markdown strings remain readable, including the demo's Unicode bullets. Edited descriptions persist as Tiptap JSON in the existing localStorage issue records so formatting survives reloads; no bulk reset or migration runs. Older V0.10 readers only accept strings and cannot render these new rich-text records. Link creation validates URL protocols, and the editor schema rejects executable markup. External assignees receive a non-editable document with no formatting controls.
+
+Scope: issue descriptions. Comment and creation forms retain their existing behavior. This is not complete Linear editor parity: slash menus, tables and inline image uploads are not implemented.
+
+Validation: five unit checks cover legacy content, rich-text persistence, unsafe markup/links, read-only documents and textarea sizing. Browser checks covered toolbar formatting, heading/list/checklist commands, links and validation, refresh persistence, undo, Escape and external-assignee restrictions. A mobile viewport could not be verified in the hidden test tab. Browser tests used a separate local origin on port 4174 to keep test data separate from the main preview.
+
+## V0.10.1 — Issue detail cleanup
+
+Reference: [Linear issue detail](https://mobbin.com/screens/cef36326-d8ec-4c6f-acd4-a9f1e1060d33) and [Linear team issue list](https://mobbin.com/screens/be6c4ee4-aa93-42b4-89b3-dcfc8386f022) on Mobbin.
+
+- Empty sub-issue and attachment panels become compact add actions; dependencies expand on demand. Existing entries remain available.
+- Labels edit inside an expandable property, and sharing details no longer dominate the properties rail.
+- Escape cancels the title edit without leaving the issue. Textareas resize on edit and viewport changes; formatting controls sit beneath the description.
+- Issue/viewer changes reset editor state, and issue-row keyboard actions ignore nested controls. Mobile issue headers retain a navigation button.
+- Descriptions still use the existing Markdown textarea and preview, not a WYSIWYG editor. All data remains browser-local.
+
+Validation: `npm test` checks textarea shrink/measurement behavior; `npm run build` checks TypeScript and production packaging. Browser checks covered title save/cancel, description save/cancel/blur, refresh persistence, list-to-detail navigation and external-assignee restrictions. Mobile layout has not been visually verified.
+
 ## V0.9 — Linear Projects visual parity pass (UI only)
 
 Reference: [Mobbin Linear Projects list](https://mobbin.com/flows/92790750-e63d-4355-a401-f1d5236bf981) and [Mobbin Linear Project details](https://mobbin.com/flows/dbc027fe-6642-4cec-912b-0e05b83edca6).
@@ -38,6 +74,8 @@ An interactive React + Vite + TypeScript UI prototype. **No real authentication,
 ## Dev and deploy
 
 Run `npm install && npm run dev` for local Vite development and `npm run build` for TypeScript + Vite production validation. Cloudflare `wrangler.jsonc` describes a Workers Static Assets deploy. GitHub Actions workflow `.github/workflows/akom-ui-cloudflare.yml` validates each PR and exports a compiled dist artifact. The preview Worker is `akom-ui-preview` in the connected Cloudflare account.
+
+From `akom-ui/`, run `npm test && npm run build`, then `npx wrangler deploy --dry-run` to check packaging and `npx wrangler deploy` to update the existing preview Worker using your authenticated Cloudflare account. Wrangler is pinned as a development dependency for repeatable local deployments.
 
 ## UX reference
 
