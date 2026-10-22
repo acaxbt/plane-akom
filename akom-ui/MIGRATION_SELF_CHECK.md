@@ -53,4 +53,9 @@ Fresh production preview: no captured console errors or warnings. Desktop viewpo
 
 ## Release
 
-Pending GitHub push, Cloudflare deployment and live smoke check.
+- Implementation commit: `b48b14472` on `feature/akom-ui-v0.1`; pushed successfully.
+- Cloudflare Worker: `akom-ui-preview`, deployed with project-local Wrangler 4.151.3 and `--keep-vars`.
+- Version ID: `883adcdb-9d82-4d04-b920-5f8b3bc6341a`.
+- Live URL: https://akom-ui-preview.suharsya.workers.dev/.
+- Live smoke check passed: v0.16 marker and shared button components, Create issue Dialog, nested priority-picker Escape (modal stays open), project Overview/Activity tabs, zero captured console errors/warnings.
+- Live smoke check did not create or edit user records. Temporary tabs and the isolated verification server were cleaned up.

@@ -18,10 +18,10 @@ Preserve the v0.15 layout, issue/project/cycle behavior, demo permissions, and e
 - [x] Browser: Home, issues/list/board, Create issue, issue details, Projects/overview/activity/milestones, Cycles/create/edit/manage, custom views, teams/workspaces and search.
 - [x] Keyboard: Tab stays inside modal; Escape dismisses the current layer; focus returns to trigger; selected-text create preserves rich content.
 - [x] Light/dark desktop and 390px mobile: no clipped popup, missing fields, unwanted layout shifts or horizontal overflow.
-- [ ] Push reviewed commit and deploy the same build to Cloudflare; smoke-test live version and save screenshots.
+- [x] Push reviewed commit and deploy the same build to Cloudflare; smoke-test live version and save screenshots.
 
 Test writes use port 4174 only. Existing user data on port 4173 and Cloudflare is preserved. No backend or full Linear feature parity is part of this migration.
 
 ## Outcome
 
-Implementation and local validation are complete. See [MIGRATION_SELF_CHECK.md](MIGRATION_SELF_CHECK.md) for coverage, intentional native controls, and known limitations. The release gate is updated after the live smoke check.
+Implementation and local validation are complete. See [MIGRATION_SELF_CHECK.md](MIGRATION_SELF_CHECK.md) for coverage, intentional native controls, and known limitations. GitHub push, Cloudflare deployment and live smoke check passed.
