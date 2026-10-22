@@ -108,3 +108,23 @@ input[data-slot="date-input"]:focus,input[data-slot="date-input"]:focus-visible{
 .cycles-page .tab-filter-group{padding:0}
 .project-tab-panel{margin:0;min-height:0;outline:0}
 .project-detail-page>[data-slot="tabs"]{gap:0;min-height:100%;display:block}
+.filter-menu[data-slot="popover-content"]{width:280px;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+.filter-menu-back,.filter-menu-clear{width:100%;justify-content:flex-start;padding:8px 9px;font-size:11px;color:var(--muted);border-radius:0}
+.filter-menu-clear{border-top:1px solid var(--line)}
+.filter-menu-count{margin-left:auto;color:var(--muted);font-size:10px}
+.filter-option-check{width:14px;height:14px;flex-shrink:0;border:1px solid var(--line);border-radius:3px;display:grid;place-items:center;color:var(--accent)}
+.filter-trigger{display:inline-flex;align-items:center;gap:7px;min-height:30px;height:auto;max-width:230px;padding:4px 7px;background:transparent;border:1px solid var(--line);border-radius:5px;font-size:11px;color:var(--muted);white-space:normal;text-align:left}
+.filter-trigger>svg{flex-shrink:0}
+.active-filter-chips{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:9px var(--page-gutter);border-bottom:1px solid var(--line-subtle)}
+.filter-chip{font-size:11px;min-height:26px;padding:3px 7px;border:1px solid var(--line);background:var(--surface);border-radius:5px;white-space:normal;text-align:left}
+.list-toolbar .property-value,.project-directory-toolbar .property-value,.custom-view-field .property-value{font-size:11px;min-height:30px;height:auto;padding:4px 7px;gap:7px}
+.project-directory-toolbar>.popover-root{width:auto;flex:none}
+.custom-view-field{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px}
+.custom-view-field>span:first-child{min-width:75px;color:var(--muted)}
+.custom-view-filter-summary{width:100%;font-size:11px;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}
+.saved-view-card{min-width:0;overflow-wrap:anywhere}
+.issue-status .property-value{padding:0;width:22px;height:22px;min-height:22px;justify-content:center;background:transparent}
+.issue-status .property-value>span:last-of-type,.issue-status .property-value>svg:last-child{display:none}
+.subissue-row>.popover-root{width:140px;flex-shrink:0}
+.subissue-row .property-value{font-size:11px;height:auto;min-height:28px;padding:4px 6px;gap:5px}
+@media(max-width:650px){.list-toolbar,.list-toolbar .left-tools{flex-wrap:wrap}.list-toolbar .right-tools{margin-left:auto}.saved-view-grid{padding:12px 0;grid-template-columns:minmax(0,1fr)}}
