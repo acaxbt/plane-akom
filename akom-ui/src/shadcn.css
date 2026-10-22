@@ -41,8 +41,9 @@
 .persona-popover[data-slot="popover-content"]{width:330px}
 .project-options-menu[data-slot="popover-content"]{width:240px;padding:5px}
 [data-slot="command"]{font-family:inherit;background:var(--surface);color:var(--text)}
-[data-slot="command-input-wrapper"]{border-bottom:1px solid var(--line);padding:0 9px;height:36px;display:flex;align-items:center;gap:7px}
-[data-slot="command-input"]{border:0;outline:0;background:transparent;font:12px var(--font);color:var(--text);height:34px;padding:0;width:100%;box-shadow:none}
+[data-slot="command-input-wrapper"]{border-bottom:1px solid var(--line);padding:0 9px;height:36px;display:flex;align-items:center;gap:7px;min-width:0}
+[data-slot="command-input-wrapper"]:focus-within{box-shadow:inset 0 -1px var(--accent)}
+[data-slot="command-input"],[data-slot="command-input"]:focus-visible{border:0;outline:0;border-radius:0;background:transparent;font:12px var(--font);color:var(--text);height:34px;padding:0;width:100%;min-width:0;flex:1;box-shadow:none}
 [data-slot="command-list"]{max-height:min(300px,var(--radix-popover-content-available-height));overflow:auto}
 [data-slot="command-item"]{display:flex;align-items:center;gap:8px;padding:8px 9px;font-size:12px;cursor:pointer;border-radius:4px;min-height:32px;white-space:normal}
 [data-slot="command-item"][data-selected=true]{background:var(--hover);color:var(--text-strong)}
