@@ -1,3 +1,18 @@
+## V0.13 — Personal workspace Home
+
+New visits open Home, with an entry above My issues in the shared sidebar. Switching member or workspace also returns to Home. History entries retain the source view when opening an issue or project, so browser Back returns to the corresponding page; existing deep links keep working.
+
+Home uses compact rows inspired by the [Linear Projects reference on Mobbin](https://mobbin.com/screens/3d3a4fae-d824-440a-961b-001c6b715a4a). The references returned by the Home search showed project/issue views, not a matching Linear Home; this is an AKOM composition using that visual language.
+
+- My work shows up to five active issues assigned to the viewer in the current workspace, ordered by priority. View all opens My issues.
+- Your projects shows up to four projects led by the viewer or connected to their assigned/created issues. Progress uses the existing issue/workflow calculation rather than sample percentages.
+- Recent activity shows the latest saved update per related project (up to four), plus up to five relevant issue-feed entries. Updates open their project; issue events open their issue. Project updates and issue events are labeled separately because legacy records have display dates rather than comparable timestamps.
+- Workspace membership is checked before deriving Home data. External assignments remain in My issues and Shared with me; Home does not reveal their parent projects. Empty workspaces show empty sections, and New issue is disabled until a team exists.
+
+Validation: 13 unit tests cover workspace/member isolation, membership revocation, priority order, completed/canceled exclusion, project involvement, activity filtering, empty data, navigation restoration and the existing editor helpers. Browser checks covered issue/project navigation and Back, My issues, member/workspace switching, new-workspace empty states, saved project updates, dark mode, and a verified 390px mobile layout with no horizontal page overflow. Tests used port 4174 so main-preview data was preserved.
+
+Limit: issue activity still uses the existing in-memory demo feed, including seed events and newly created issues. It is not a complete persisted audit log; project updates retain their existing localStorage persistence. No authentication, database or server-side permissions are added.
+
 ## V0.12 — Shared shell and consistent project controls
 
 - Issues, Projects, Inbox and team pages share the same sidebar width, header height, search and navigation row dimensions. Removed project-specific shell overrides; page titles, tabs and header actions use shared styles.
