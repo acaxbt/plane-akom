@@ -1,3 +1,8 @@
+## Audit produk dan kesiapan backend
+
+- [Audit produk dan model domain](PRODUCT_AUDIT.md): use case, taksonomi, objek, relasi, event dan gap produk.
+- [UI dan kesiapan backend](docs/BACKEND_READINESS_AUDIT.md): dokumen kerja berkala dengan inventaris UI, register temuan/keputusan, kontrak API usulan, acceptance criteria dan evidence screenshot. Mulai sesi lanjutan dari checkpoint di dokumen ini.
+
 ## V0.16 — Shared shadcn components
 
 The standalone AKOM prototype now uses owned shadcn/ui components generated with CLI 4.22.1 and the Radix foundation. Tailwind utilities are integrated with Vite without enabling preflight, preserving AKOM typography, light/dark tokens, sidebar widths and page spacing. The component code lives in `src/components/ui`; application adaptations remain in shared controls and AKOM styles.
