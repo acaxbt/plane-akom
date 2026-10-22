@@ -259,7 +259,7 @@ button.subissue-title:hover{color:var(--accent)}.subissue-row select{max-width:1
 .triage-item{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:18px;display:flex;justify-content:space-between;gap:18px;align-items:center}
 .triage-item-main{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
 .triage-item-main .muted{font-size:11px}
-.triage-item-main button{color:var(--text-strong);font-weight:610;font-size:13px;text-align:left}
+.triage-item-main button{color:var(--text-strong);font-weight:610;font-size:13px;text-align:left;justify-content:flex-start;align-self:flex-start;white-space:normal;overflow-wrap:anywhere;padding:0;line-height:1.5}
 .triage-item-main button:hover{color:var(--accent)}
 .triage-actions{display:flex;gap:8px;flex:none}
 .triage-empty{padding:55px 30px;text-align:center;color:var(--muted);display:flex;flex-direction:column;gap:9px;align-items:center;justify-content:center;min-width:230px}
